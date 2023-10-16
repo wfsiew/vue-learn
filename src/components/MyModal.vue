@@ -1,7 +1,7 @@
 <template>
   <div class="backdrop" @click="closeModal">
     <div class="modal" :class="{ sale: theme === 'sale' }">
-      <slot></slot>
+      <slot>default content</slot>
       <div class="actions">
         <slot name="links"></slot>
       </div>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  props: ['header', 'text', 'theme'],
+  props: ['theme'],
   methods: {
     closeModal() {
       this.$emit('close')
@@ -46,6 +46,7 @@ export default {
   }
   .modal .actions {
     text-align: center;
+    margin: 30px 0 10px 0;
   }
   .modal .actions a {
     color: #333;
@@ -66,6 +67,6 @@ export default {
     color: white;
   }
   .modal.sale .actions a {
-    color: wheat;
+    color: white;
   }
 </style>
