@@ -1,6 +1,17 @@
 <template>
   <h1>{{ title }}</h1>
-  <MyModal />
+  <p>Welcome...</p>
+  <div v-if="showModal">
+    <MyModal theme="" @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">sign up now</a>
+        <a href="#">more info</a>
+      </template>
+      <h1>Ninja Giveaway</h1>
+      <p>Grab your ninja swag for half price</p>
+    </MyModal>
+  </div>
+  <button @click="toggleModal">close modal</button>
 </template>
 
 <script>
@@ -11,11 +22,16 @@ export default {
   components: { MyModal },
   data() {
     return {
-      title: 'My First Vue App :)'
+      title: 'My First Vue App :)',
+      header: 'Sign up for the Giveaway',
+      text: 'Grab your ninja swag for half price',
+      showModal: false
     }
   },
   methods: {
-    
+    toggleModal() {
+      this.showModal = !this.showModal
+    }
   },
 }
 </script>
